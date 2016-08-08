@@ -5,6 +5,8 @@ export default function Login($http, $state, $cookies, SERVER){
         $http.post(SERVER.URL + 'login', user).then(resp => {
             $cookies.put('access_token', resp.data.access_token);
             $state.go('profile');
+        }, err => {
+            console.log(err);
         });
     }
 }

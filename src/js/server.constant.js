@@ -1,5 +1,5 @@
 const S = {
-    URL: 'http://user-auth-ikenna.herokuapp.com/'
+    URL: 'https://buzzwords-app.herokuapp.com/'
 };
 
 export default S;
