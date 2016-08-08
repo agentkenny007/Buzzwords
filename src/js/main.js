@@ -15,3 +15,5 @@ angular
     .controller('RegisterController', RegisterController)
     .controller('ProfileController', ProfileController)
     .controller('LoginController', LoginController);
+
+console.log(angular);
