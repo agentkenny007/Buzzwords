@@ -41,11 +41,12 @@
   },
   "dependencies": {
 
-    "angular-base64": "^2.0.5"
+    "angular-base64": "^2.0.5",
 
     "angular": "^1.5.8",
     "angular-cookies": "^1.5.8",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "jquery": "^3.1.0"
 
   }
 }
