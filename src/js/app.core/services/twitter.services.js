@@ -1,11 +1,11 @@
 function TweetService($http, $base64, SERVER) {
 
-	this.appToken = function() {
+	this.appToken = function(term) {
 
 		let Etoken = $base64.encode('AAAAAAAAAAAAAAAAAAAAAB7LwQAAAAAAarZg1tAJPeJJxnviOsbLlwIPFC8%3DbQNWTIky9xyYEBVJE3q4uhqgEazScfeBcUZA9nW0u94dnOa8Cy');
 		console.log( Etoken);
    
-		$http.post('http://localhost:3333/search/tweets',{q: 'Fill Werrell'}).then((res)=>{
+		$http.post('http://localhost:3333/search/tweets',{q: term}).then((res)=>{
 			console.log(res.data);
 		})
 

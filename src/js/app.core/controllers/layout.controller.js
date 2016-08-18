@@ -1,4 +1,4 @@
-export default function Layout (UserService, $rootScope, TweetService) {
+export default function Layout (UserService, $rootScope) {
     let vm = this;
     vm.logOut = logOut;
     vm.loggedIn = false;
@@ -6,7 +6,7 @@ export default function Layout (UserService, $rootScope, TweetService) {
 
     
     init();
-    TweetService.appToken();
+ 
     $rootScope.$on('loginChange', (event, status) => {
         vm.loggedIn = status;
     });
@@ -21,4 +21,4 @@ export default function Layout (UserService, $rootScope, TweetService) {
     }
 }
 
-Layout.$inject = ['UserService', '$rootScope', 'TweetService'];
+Layout.$inject = ['UserService', '$rootScope'];
