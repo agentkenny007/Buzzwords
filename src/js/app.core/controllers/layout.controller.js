@@ -1,3 +1,4 @@
+import $ from 'jquery';
 export default function Layout (UserService, $rootScope) {
     let vm = this;
     vm.logOut = logOut;
@@ -19,6 +20,8 @@ export default function Layout (UserService, $rootScope) {
         UserService.logOut();
         vm.loggedIn = false;
     }
+
+    $(document).on('click', 'header nav .new', function(){ $(this).toggleClass('active'); });
 }
 
 Layout.$inject = ['UserService', '$rootScope'];
