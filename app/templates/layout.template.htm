@@ -18,16 +18,16 @@
             <input type="text" placeholder="enter #topic">
             <span class="sep"></span>
         </div>
-        <div class="user login" ng-show="vm.loggedIn">
+        <ul class="user login" ng-show="vm.loggedIn">
             <span class="sep"></span>
-            <a ui-sref=".profile">My Campaigns</a>
+            <li><a ui-sref=".profile">My Campaigns</a></li>
             <span class="sep"></span>
-            <button class="log-out">Log Out</button>
-        </div>
-        <div class="guest login" ng-hide="vm.loggedIn">
+            <li><button class="log-out">Log Out</button></li>
+        </ul>
+        <ul class="guest login" ng-hide="vm.loggedIn">
             <a ui-sref=".login">Log In</a> |
             <a ui-sref=".register">Register</a>
-        </div>
+        </ul>
     </nav>
     <section class="spacer"></section>
     <a ui-sref=".home" class="graphic logo">GrapeVine</a>
