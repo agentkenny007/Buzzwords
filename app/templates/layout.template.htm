@@ -22,11 +22,13 @@
             <span class="sep"></span>
             <li><a ui-sref=".profile">My Campaigns</a></li>
             <span class="sep"></span>
-            <li><button class="log-out">Log Out</button></li>
+            <li><button class="log-out" ng-click="vm.logOut()">Log Out</button></li>
         </ul>
         <ul class="guest login" ng-hide="vm.loggedIn">
-            <a ui-sref=".login">Log In</a> |
-            <a ui-sref=".register">Register</a>
+            <span class="sep"></span>
+            <li><a ui-sref=".login">Log In</a></li>
+            <span class="sep"></span>
+            <li><a ui-sref=".register">Register</a></li>
         </ul>
     </nav>
     <section class="spacer"></section>
