@@ -1,3 +1,5 @@
-# Buzzwords Kind of App
+# GrapeVine
 
-Yea. Yes.
+Sentiment analysis web app.
+
+[Live in production link](http://grapevine.surge.sh).
