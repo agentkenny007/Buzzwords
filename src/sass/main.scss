@@ -2,6 +2,7 @@ $grape: #81197B;
 $darkgrape: #3B002E;
 $lightgrape: #bf9cc6;
 $pink: #ffc5ff;
+$darkpink: #C23BAA;
 
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
@@ -55,6 +56,7 @@ html, body { height: 100%; }
     padding: 20px 0;
     padding-bottom: 50px;
     overflow: auto;
+    box-sizing: border-box;
     header {
         nav {
             position: fixed;
@@ -167,7 +169,7 @@ html, body { height: 100%; }
             overflow: hidden;
             &.typeface {
                 position: relative;
-                margin-bottom: -5em;
+                margin-bottom: 1em;
                 width: 615px;
                 padding-top: 182px;
                 background: url(../images/logo-typeface.png) center no-repeat;
@@ -211,6 +213,53 @@ html, body { height: 100%; }
                 bottom: -34px;
                 height: 38px;
                 background: url(../images/sep-below.png) 0/100% 38px no-repeat;
+            }
+        }
+        .reglogin {
+            position: relative;
+            width: 61.8%;
+            max-width: 500px;
+            margin: 40px auto;
+            background: rgba(194, 59, 170, 0.2);
+            border: 1px solid $darkgrape;
+            padding: 20px;
+            @include box-shadow(0 0 5px rgba(194, 59, 170, 0.725));
+            @include border-radius(15px);
+            button {
+                color: $darkpink;
+                background: $darkgrape;
+                border: 1px solid rgba(194, 59, 170, .5);
+                @include border-radius(4px);
+                @include box-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
+                @include transition(all 0.35s ease);
+                &:hover {
+                    color: $darkgrape;
+                    background: $darkpink;
+                    border: 1px solid lighten($darkpink, 25%);
+                    @include filter(drop-shadow(0 0 4px darken($grape, 20%)));
+                }
+            }
+            input {
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 0.5em;
+                outline: none;
+                border: 1px solid black;
+                padding: 2px 10px;
+                color: $darkgrape;
+                font-size: 28px;
+                @include border-radius(5px);
+                @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+                @include transition(all 0.25s ease);
+                &.password {
+                    width: 61.8%;
+                }
+                &:hover {
+                    @include filter(drop-shadow(0 0 5px $pink));
+                }
+                &:focus {
+                    @include filter(drop-shadow(0 0 12px $darkgrape));
+                }
             }
         }
         .search {
@@ -291,6 +340,8 @@ html, body { height: 100%; }
         background: rgba(0, 0, 0, 0.5);
         padding: 0 20px;
         color: $lightgrape;
+        border-top: 1px solid rgba(194, 59, 170, 0.555);
+        @include box-shadow(0 -1px 5px rgba(0, 0, 0, 0.45));
     }
     &:not(.home) {
         header .graphic.logo {
@@ -317,6 +368,7 @@ html, body { height: 100%; }
                 background: url(../images/logo-graphic.png) center/370px 344px no-repeat;
                 @include transition(all 1.25s ease);
             }
+            .typeface.logo { margin-bottom: -5em; }
             .spacer {
                 height: 370px;
                 @include transition(all 1.25s ease);
