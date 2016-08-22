@@ -1,4 +1,4 @@
-export default function Create ($http, $state, SERVER, $stateParams, TweetService){
+export default function Create ($http, $state, SERVER, $stateParams, TweetService, SortAnalysis){
     let vm = this;
     vm.searchTerm  = $stateParams.term; 
     vm.analysisArray;
@@ -6,43 +6,40 @@ export default function Create ($http, $state, SERVER, $stateParams, TweetServic
     	    
 			 vm.analysisArray = res.data
 			 console.log(vm.analysisArray);
+			 vm.graphAnalysis = SortAnalysis.sortObj(vm.analysisArray);
 		
 		});
+    
 
 
 
 
-  vm.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  vm.series = ['Series A', 'Series B'];
-  vm.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-  vm.onClick = function (points, evt) {
-    console.log(points, evt);
+  vm.labels = ["little Positive", "Positive", "Very Positive", "little Negative", "Negative", "Very Negative"];
+  
+  vm.data = [5, 2, 3, 2, 5, 5];
+  vm.onClick = function (evt) {
+    console.log(evt);
   };
-  vm.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-  vm.options = {
-    scales: {
-      yAxes: [
-        {
-          id: 'y-axis-1',
-          type: 'linear',
-          display: true,
-          position: 'left'
-        },
-        {
-          id: 'y-axis-2',
-          type: 'linear',
-          display: true,
-          position: 'right'
-        }
-      ]
-    }
-  };
+
+
+    vm.bubbleseries = ['Series A', 'Series B'];
+
+    vm.bubbledata = [
+      [{
+        x: 40,
+        y: 10,
+        r: 20
+      }],
+      [{
+        x: 10,
+        y: 40,
+        r: 50
+      }]
+    ];
+
 
 
 
 }
 
-Create.$inject = ['$http', '$state', 'SERVER', '$stateParams','TweetService'];
+Create.$inject = ['$http', '$state', 'SERVER', '$stateParams','TweetService', 'SortAnalysis'];

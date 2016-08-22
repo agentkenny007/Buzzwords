@@ -1,7 +1,13 @@
 <h1>Create a new Campaign</h1>
 <div class="chart_holder">
-<canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options" chart-dataset-override="datasetOverride" chart-click="onClick">
 
+<canvas id="pie" class="chart chart-pie"
+  chart-data="vm.data" chart-labels="vm.labels" chart-options="options"  chart-click="vm.onClick">
 </canvas> 
+
+<canvas id="base" class="chart-bubble" chart-data="vm.bubbledata"
+  chart-series="vm.bubbleseries" >
+</canvas>
+
 </div>
 <div class="camp_container">Hellp {{vm.analysisArray}}</div>
