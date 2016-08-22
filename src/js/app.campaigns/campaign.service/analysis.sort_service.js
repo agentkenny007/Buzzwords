@@ -3,6 +3,7 @@ import _ from 'lodash';
 function SortAnalysis (){
 
 	this.sortObj = sortAnalysis 
+	this.gapFill = gapFill;
 
 	function sortAnalysis (obj){
 		let graphArrays = {}
@@ -12,6 +13,22 @@ function SortAnalysis (){
 		graphArrays.posts.allNegative = [];
 		graphArrays.words.allPositive = [];
 		graphArrays.words.allNegative = [];
+		graphArrays.posts.veryPositive = [];
+		graphArrays.posts.positive = [];
+		graphArrays.posts.littlePositive = [];
+		graphArrays.posts.neutral = [];
+		graphArrays.posts.littleNegative = [];
+		graphArrays.posts.negative = [];
+		graphArrays.posts.veryNegative = [];
+
+
+		graphArrays.words.veryPositive = [];
+		graphArrays.words.positive = [];
+		graphArrays.words.littlePositive = [];
+		graphArrays.words.neutral = [];
+		graphArrays.words.littleNegative = [];
+		graphArrays.words.negative = [];
+		graphArrays.words.veryNegative = [];
 
     	obj.forEach(function(postObj){
 
@@ -24,42 +41,38 @@ function SortAnalysis (){
 
     		if (post >= 0.6){
 
-    			graphArrays.posts.veryPositive = [];
     			graphArrays.posts.veryPositive.push(postObj)
 
     			graphArrays.posts.allPositive.push(postObj)
 
     		} else if(post >= 0.29999 && post <= 0.59999){
 
-    			graphArrays.posts.positive = [];
     			graphArrays.posts.positive.push(postObj)
     			graphArrays.posts.allPositive.push(postObj)
 
     		} else if(post > 0 && post <= 0.29999){
 
-    			graphArrays.posts.littlePositive = [];
     			graphArrays.posts.littlePositive.push(postObj)
     			graphArrays.posts.allPositive.push(postObj)    			
 
     		} else if(post == 0){
-    			graphArrays.posts.neutral = [];
     			graphArrays.posts.neutral.push(postObj)    			
 
     		} else if(post >= -0.29999 && post < 0){
 
-    			graphArrays.posts.littleNegative = [];
+    			
     			graphArrays.posts.littleNegative.push(postObj)
     			graphArrays.posts.allNegative.push(postObj)    			
 
     		} else if(post >= -0.59999 && post < -0.29999){
 
-				graphArrays.posts.negative = [];
+				
     			graphArrays.posts.negative.push(postObj)
     			graphArrays.posts.allNegative.push(postObj) 
 
     		} else if( post <= -0.6){
 
-    			graphArrays.posts.veryNegative = [];
+    			
     			graphArrays.posts.veryNegative.push(postObj)
     			graphArrays.posts.allNegative.push(postObj) 
     		};
@@ -71,42 +84,42 @@ function SortAnalysis (){
             		if (keyword.score >= 0.6){
 
 
-    			graphArrays.words.veryPositive = [];
+    			
     			graphArrays.words.veryPositive.push(keyword);
     			graphArrays.words.allPositive.push(keyword);
 
     		} else if(keyword.score >= 0.29999 && keyword.score <= 0.59999){
 
-    			graphArrays.words.positive = [];
+    			
     			graphArrays.words.positive.push(keyword);
     			graphArrays.words.allPositive.push(keyword);
 
     		} else if(keyword.score > 0 && keyword.score <= 0.29999){
 
-    			graphArrays.words.littlePositive = [];
+    			
     			graphArrays.words.littlePositive.push(keyword);
     			graphArrays.words.allPositive.push(keyword);    			
 
     		} else if(keyword.score == 0){
 
-    			graphArrays.words.neutral = [];
+    			
     			graphArrays.words.neutral.push(keyword);
 
     		} else if(keyword.score >= -0.29999 && keyword.score < 0){
 
-    			graphArrays.words.littleNegative = [];
+    			
     			graphArrays.words.littleNegative.push(keyword);
     			graphArrays.words.allNegative.push(keyword);
 
     		} else if(keyword.score >= -0.59999 && keyword.score < -0.29999){
 
-    			graphArrays.words.negative = [];
+    			
     			graphArrays.words.negative.push(keyword);
     			graphArrays.words.allNegative.push(keyword);
 
     		} else if( keyword.score <= -0.6){
 
-    			graphArrays.words.veryNegative = [];
+    			
     			graphArrays.words.veryNegative.push(keyword);
     			graphArrays.words.allNegative.push(keyword);
     		};
@@ -188,6 +201,64 @@ function SortAnalysis (){
  	return graphArrays;
 
 	}
+
+	function gapFill (obj){
+		let postVP = obj.posts.hasOwnProperty('veryPositive');
+		let postP = obj.posts.hasOwnProperty('positive');
+		let postLP = obj.posts.hasOwnProperty('littlePositive');
+		let postNU = obj.posts.hasOwnProperty('neutral');
+		let postVN = obj.posts.hasOwnProperty('veryNegative');
+		let postN = obj.posts.hasOwnProperty('negative');
+		let postLN = obj.posts.hasOwnProperty('littleNegative');
+
+		let wordsVP = obj.words.hasOwnProperty('veryPositive');
+		let wordsP = obj.words.hasOwnProperty('positive');
+		let wordsLP = obj.words.hasOwnProperty('littlePositive');
+		let wordsNU = obj.words.hasOwnProperty('neutral');
+		let wordsVN = obj.words.hasOwnProperty('veryNegative');
+		let wordsN = obj.words.hasOwnProperty('negative');
+		let wordsLN = obj.words.hasOwnProperty('littleNegative');
+	
+
+		if (postVP === false){
+			obj.posts.veryPositive = [];
+		} else if (postP === false){
+			obj.posts.positive = [];
+		} else if (postLP === false){
+			obj.posts.littlePositive = [];
+		} else if (postNU === false){
+			obj.posts.neutral = [];
+		} else if (postVN === false){
+			obj.posts.veryNegative = [];
+
+		} else if (postN === false){
+			obj.posts.negative = [];
+		} else if (postLN === false){
+			obj.posts.littleNegative = [];
+		};
+
+
+
+		if (wordsVP === false){
+			obj.words.veryPositive = [];
+		} else if (wordsP === false){
+			obj.words.positive = [];
+		} else if (wordsLP === false){
+			obj.words.littlePositive = [];
+		} else if (wordsNU === false){
+			obj.words.neutral = [];
+		} else if (wordsVN === false){
+			obj.words.veryNegative = [];
+		} else if (wordsN === false){
+			obj.words.negative = [];
+		} else if (wordsLN === false){
+			obj.words.littleNegative = [];
+		};
+
+		return obj 
+
+	}
+
 
 }
 
