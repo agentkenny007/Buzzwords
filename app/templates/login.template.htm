@@ -4,4 +4,6 @@
         <input type="password" class="password" ng-model="user.password" placeholder="Password"><br>
         <button>Login</button>
     </form>
+    <hr>
+    <fb:login-button scope="public_profile,email" onlogin="login('fbUser')"></fb:login-button>
 </section>
