@@ -31,7 +31,8 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
     	    
 			 vm.analysisArray = res.data
 			 console.log(vm.analysisArray);
-			 vm.graphAnalysis = SortAnalysis.sortObj(vm.analysisArray);
+			 vm.graphAnalysis = SortAnalysis.sortObj(vm.analysisArray.tweets, vm.analysisArray.tumblrPosts);
+			 // vm.graphAnalysistumb = SortAnalysis.sortObj(vm.analysisArray.tumblrPosts)
 			 // vm.graphAnalysis = SortAnalysis.gapFill(vm.graphAnalysis);
 			 // console.log(vm.graphAnalysis)
 			ChartService.chartGenerator(vm.graphAnalysis, vm);

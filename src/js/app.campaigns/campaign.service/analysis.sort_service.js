@@ -5,7 +5,9 @@ function SortAnalysis (){
 	this.sortObj = sortAnalysis 
 	
 
-	function sortAnalysis (obj){
+	function sortAnalysis (obj1, obj2){
+		let objss = obj1.concat(obj2);
+		console.log(objss);
 		let graphArrays = {}
 		graphArrays.posts= {}
 		graphArrays.words= {}
@@ -30,7 +32,7 @@ function SortAnalysis (){
 		graphArrays.words.negative = [];
 		graphArrays.words.veryNegative = [];
 
-    	obj.forEach(function(postObj){
+    	objss.forEach(function(postObj){
 
     		let post = postObj.sentiment.score;
 
