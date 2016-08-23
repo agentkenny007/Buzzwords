@@ -9,6 +9,7 @@ import CampaignsController from './controllers/campaigns.controller';
 import CreateController    from './controllers/create.controller';
 import {SortAnalysis}      from './campaign.service/analysis.sort_service.js';
 import {ChartService}      from './campaign.service/chartGenerator.service.js';
+import {PostAnalysis}      from './campaign.service/post.analysis.service.js';
 import {graphElement}      from './directives/graph.directive.js';
 
 angular
@@ -17,4 +18,5 @@ angular
     .controller('CreateController', CreateController)
     .service('SortAnalysis', SortAnalysis)
     .service('ChartService', ChartService)
+    .service('PostAnalysis', PostAnalysis)
     .directive('graphElement', graphElement);

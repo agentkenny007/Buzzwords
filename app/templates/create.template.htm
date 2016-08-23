@@ -1,21 +1,11 @@
 <h1>Create a new Campaign</h1>
-<div id="char" class="chart_holder">
-
-<canvas id="pie" class="chart chart-pie"
-  chart-data="vm.data" chart-labels="vm.labels" chart-options="options"  chart-click="vm.onClick">
-</canvas> 
-
-<canvas id="base" class="chart-bubble" chart-data="vm.bubbdata"
-  chart-series="vm.bubbdata.data" chart-hover="vm.onHover" chart-options="vm.options" >
-</canvas>
-
-<canvas id="pie" class="chart chart-pie"
-  chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
-</canvas> 
+<!-- <div id="char" class="chart_holder">
 
 
 
-</div>
+
+
+</div> -->
 
 
 <graphElement id="char" class="chart_holder" ng-repeat="graph in vm.arrayOfgraphs" temp={{graph}}>
@@ -24,4 +14,10 @@
 	
 </graphElement>
 
-<div class="camp_container">Hellp {{vm.freqRadarlabels}}</div>
+<div id="char" class="camp_container">
+
+<button ng-click="vm.submitAnalysis()">Add to Campaign</button>
+<button ng-click="vm.submitNewCampaign()">Add To New Campaign</button>
+
+</div>
+

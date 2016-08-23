@@ -9,6 +9,7 @@ export default function Home (){
                 wrapper.removeClass('scrolled');
         };
 
+    $('.container').addClass('home');
     $(window).scroll(animateHeader);
 }
 
