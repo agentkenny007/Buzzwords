@@ -3,7 +3,7 @@ import _ from 'lodash';
 function SortAnalysis (){
 
 	this.sortObj = sortAnalysis 
-	this.gapFill = gapFill;
+	
 
 	function sortAnalysis (obj){
 		let graphArrays = {}
@@ -151,12 +151,14 @@ function SortAnalysis (){
 
     	dubbedArray.forEach((matched, index2) =>{
     		if (word.word === matched.word){
-    			console.log(word, index, matched, index2);
+    			// console.log(word, index, matched, index2);
     			newWordobj.freq += 1;
     			dubbedArray.splice(index2, 1);
 
     		}
     	});
+
+
 
         positiveFreqarray.push( newWordobj);
     });
@@ -179,7 +181,7 @@ function SortAnalysis (){
 
     	dubbedArray.forEach((matched, index2) =>{
     		if (word.word === matched.word){
-    			console.log(word, index, matched, index2);
+    			// console.log(word, index, matched, index2);
     			newWordobj.freq += 1;
     			dubbedArray.splice(index2, 1);
 
@@ -194,70 +196,87 @@ function SortAnalysis (){
 
     };
 
-
     graphArrays.words.freqPositive = sortPositivefreq();
     graphArrays.words.freqNegative = sortNegativefreq();
+
+
+    	let sentimentFreq = function () {
+    		console.log(graphArrays)
+    		
+
+    		console.log('hasjfdh')
+    		graphArrays.sentimentFreq = {};
+    		graphArrays.sentimentFreq.littlePositive = 0;
+    		graphArrays.sentimentFreq.positive = 0;
+    		graphArrays.sentimentFreq.veryPositive = 0;
+    		graphArrays.sentimentFreq.littleNegative = 0;
+    		graphArrays.sentimentFreq.negative = 0;
+    		graphArrays.sentimentFreq.veryNegative = 0;
+
+		  graphArrays.words.freqPositive.forEach((eachword)=>{
+			let theWord = eachword;
+
+
+		if (theWord.score >= 0.6){
+
+    			graphArrays.sentimentFreq.veryPositive += theWord.freq 
+
+    			
+
+    		} else if(theWord.score >= 0.29999 && theWord.score <= 0.59999){
+
+    			graphArrays.sentimentFreq.positive += theWord.freq
+
+    		} else if(theWord.score > 0 && theWord.score <= 0.29999){
+
+
+				graphArrays.sentimentFreq.littlePositive += theWord.freq  
+ 			} 
+
+
+
+
+    	});
+
+
+
+		  graphArrays.words.freqNegative.forEach((eachword)=>{
+			let theWord = eachword;
+
+   			if(theWord.score >= -0.29999 && theWord.score < 0){
+
+    			
+  				graphArrays.sentimentFreq.littleNegative += theWord.freq  			
+
+    		} else if(theWord.score >= -0.59999 && theWord.score < -0.29999){
+
+				
+				graphArrays.sentimentFreq.negative += theWord.freq
+				console.log(theWord.freq)
+
+    		} else if( theWord.score <= -0.6){
+
+    			
+    			graphArrays.sentimentFreq.veryNegative += theWord.freq
+    		};
+
+
+
+
+    	});
+
+    	
+};
+    sentimentFreq();
+
+
     console.log(graphArrays);
  	return graphArrays;
 
-	}
-
-	function gapFill (obj){
-		let postVP = obj.posts.hasOwnProperty('veryPositive');
-		let postP = obj.posts.hasOwnProperty('positive');
-		let postLP = obj.posts.hasOwnProperty('littlePositive');
-		let postNU = obj.posts.hasOwnProperty('neutral');
-		let postVN = obj.posts.hasOwnProperty('veryNegative');
-		let postN = obj.posts.hasOwnProperty('negative');
-		let postLN = obj.posts.hasOwnProperty('littleNegative');
-
-		let wordsVP = obj.words.hasOwnProperty('veryPositive');
-		let wordsP = obj.words.hasOwnProperty('positive');
-		let wordsLP = obj.words.hasOwnProperty('littlePositive');
-		let wordsNU = obj.words.hasOwnProperty('neutral');
-		let wordsVN = obj.words.hasOwnProperty('veryNegative');
-		let wordsN = obj.words.hasOwnProperty('negative');
-		let wordsLN = obj.words.hasOwnProperty('littleNegative');
-	
-
-		if (postVP === false){
-			obj.posts.veryPositive = [];
-		} else if (postP === false){
-			obj.posts.positive = [];
-		} else if (postLP === false){
-			obj.posts.littlePositive = [];
-		} else if (postNU === false){
-			obj.posts.neutral = [];
-		} else if (postVN === false){
-			obj.posts.veryNegative = [];
-
-		} else if (postN === false){
-			obj.posts.negative = [];
-		} else if (postLN === false){
-			obj.posts.littleNegative = [];
-		};
+	};
 
 
 
-		if (wordsVP === false){
-			obj.words.veryPositive = [];
-		} else if (wordsP === false){
-			obj.words.positive = [];
-		} else if (wordsLP === false){
-			obj.words.littlePositive = [];
-		} else if (wordsNU === false){
-			obj.words.neutral = [];
-		} else if (wordsVN === false){
-			obj.words.veryNegative = [];
-		} else if (wordsN === false){
-			obj.words.negative = [];
-		} else if (wordsLN === false){
-			obj.words.littleNegative = [];
-		};
-
-		return obj 
-
-	}
 
 
 }

@@ -1,5 +1,5 @@
 <h1>Create a new Campaign</h1>
-<div class="chart_holder">
+<div id="char" class="chart_holder">
 
 <canvas id="pie" class="chart chart-pie"
   chart-data="vm.data" chart-labels="vm.labels" chart-options="options"  chart-click="vm.onClick">
@@ -9,5 +9,19 @@
   chart-series="vm.bubbdata.data" chart-hover="vm.onHover" chart-options="vm.options" >
 </canvas>
 
+<canvas id="pie" class="chart chart-pie"
+  chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
+</canvas> 
+
+
+
 </div>
-<div class="camp_container">Hellp {{vm.analysisArray}}</div>
+
+
+<graphElement id="char" class="chart_holder" ng-repeat="graph in vm.arrayOfgraphs" temp={{graph}}>
+
+	graph
+	
+</graphElement>
+
+<div class="camp_container">Hellp {{vm.freqRadarlabels}}</div>

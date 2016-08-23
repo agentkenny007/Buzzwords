@@ -41,7 +41,13 @@ function ChartService (){
 		});
 
 
-   
+   		viewmodel.freqRadarlabels = ["little Positive", "Positive", "Very Positive", "little Negative", "Negative", "Very Negative"];
+   		viewmodel.freqRadardata   = [obj.sentimentFreq.littlePositive,
+					   obj.sentimentFreq.positive, 
+					   obj.sentimentFreq.veryPositive,  
+					   obj.sentimentFreq.littleNegative, 
+					   obj.sentimentFreq.negative,
+					   obj.sentimentFreq.veryNegative];
 
 
 
@@ -49,7 +55,17 @@ function ChartService (){
 
 
 
-
+	    viewmodel.arrayOfgraphs = [`<canvas id="pie" class="chart chart-pie"
+  chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
+</canvas> `, `<canvas id="pie" class="chart chart-pie"
+  chart-data="vm.wordData" chart-labels="vm.labels" chart-options="options">
+</canvas> `, `<canvas id="polar-area" class="chart chart-polar-area"
+  chart-data="vm.positiveWordfreq" chart-labels="vm.positiveWordfreqLabel" chart-options="options">
+</canvas> `,`<canvas id="polar-area" class="chart chart-polar-area"
+  chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="options">
+</canvas> `,`<canvas id="radar" class="chart chart-radar"
+  chart-data="vm.freqRadardata" chart-options="options" chart-labels="vm.freqRadarlabels">
+</canvas>  `];
 
 	   	viewmodel.piePost = `<canvas id="pie" class="chart chart-pie"
   chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
@@ -67,6 +83,9 @@ function ChartService (){
   chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="options">
 </canvas> `
 											
+		viewmodel.PolradarWordfreq = `<canvas id="radar" class="chart chart-radar"
+  chart-data="vm.freqRadardata" chart-options="options" chart-labels="vm.freqRadarlabels">
+</canvas>  `
 
 	};
 

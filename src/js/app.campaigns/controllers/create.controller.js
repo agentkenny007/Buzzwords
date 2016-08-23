@@ -1,7 +1,32 @@
-export default function Create ($http, $state, SERVER, $stateParams, TweetService, SortAnalysis, ChartService){
+import $ from 'jquery';
+
+export default function Create ($http, $state, SERVER, $scope, $compile, $stateParams, TweetService, SortAnalysis, ChartService){
     let vm = this;
     vm.searchTerm  = $stateParams.term; 
     vm.analysisArray;
+    vm.labels;
+    vm.postData = [16, 6, 8, 14, 4, 4];
+    vm.wordData;
+    vm.neqativeWordfreqLabel;
+    vm.neqativeWordfreq;
+    vm.positiveWordfreqLabel;
+    vm.positiveWordfreq;
+    vm.freqRadarlabels;
+    vm.freqRadardata;
+
+        vm.chartInjector = chartAppend;
+    function chartAppend (){
+
+    	vm.arrayOfgraphs.forEach((graph)=>{
+    		  let canvas_html = graph;
+    		  var element = angular.element(canvas_html);
+			  $compile(element)($scope);
+			  $('#char').append(element);
+
+    	});
+    	
+    };
+
     vm.getAnalysis = TweetService.appToken(vm.searchTerm).then((res)=>{
     	    
 			 vm.analysisArray = res.data
@@ -10,10 +35,20 @@ export default function Create ($http, $state, SERVER, $stateParams, TweetServic
 			 // vm.graphAnalysis = SortAnalysis.gapFill(vm.graphAnalysis);
 			 // console.log(vm.graphAnalysis)
 			ChartService.chartGenerator(vm.graphAnalysis, vm);
+	
 			console.log(vm.neqativeWordfreqLabel, vm.neqativeWordfreq, vm.positiveWordfreqLabel, vm.positiveWordfreq);
-		});
-    
+			console.log(vm.freqRadarlabels, vm.freqRadardata);
+			
+			vm.chartInjector()
 
+
+		});
+
+    
+    
+ 
+
+console.log(vm.freqRadarlabels, vm.freqRadardata);
 
 
 
@@ -22,6 +57,7 @@ export default function Create ($http, $state, SERVER, $stateParams, TweetServic
   vm.data = [5, 2, 3, 2, 5, 5];
   vm.onClick = function (evt) {
     console.log(evt);
+    console.log(vm.freqRadarlabels, vm.freqRadardata);
   };
 
 
@@ -85,4 +121,4 @@ export default function Create ($http, $state, SERVER, $stateParams, TweetServic
 
 }
 
-Create.$inject = ['$http', '$state', 'SERVER', '$stateParams','TweetService', 'SortAnalysis', 'ChartService'];
+Create.$inject = ['$http', '$state', 'SERVER','$scope', '$compile', '$stateParams','TweetService', 'SortAnalysis', 'ChartService'];
