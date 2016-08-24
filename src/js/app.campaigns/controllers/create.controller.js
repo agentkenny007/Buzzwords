@@ -40,12 +40,16 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
 			 // console.log(vm.graphAnalysis)
 			ChartService.chartGenerator(vm.graphAnalysis, vm);
 	
-			console.log(vm.neqativeWordfreqLabel, vm.neqativeWordfreq, vm.positiveWordfreqLabel, vm.positiveWordfreq);
-			console.log(vm.freqRadarlabels, vm.freqRadardata);
+			// console.log(vm.neqativeWordfreqLabel, vm.neqativeWordfreq, vm.positiveWordfreqLabel, vm.positiveWordfreq);
+			// console.log(vm.freqRadarlabels, vm.freqRadardata);
+
 			
 			vm.chartInjector()
 
-
+				TweetService.campGet(vm.analysisArray).then((res)=>{
+		console.log('hi shshshshshsh')
+		console.log(res.data);
+	})   
 		});
 
     vm.submitAnalysis = submitAnalysis;
@@ -57,14 +61,21 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
 
     }
     
-    
+ 
  
 
-console.log(vm.freqRadarlabels, vm.freqRadardata);
+
 
 
 
   //     vm.options = {tooltips: { enabled: false }}
+
+  	vm.options = {
+        legend: {
+            display: true,
+ 
+        }
+    }
 
 
 

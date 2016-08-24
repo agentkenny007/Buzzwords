@@ -203,10 +203,10 @@ function SortAnalysis (){
 
 
     	let sentimentFreq = function () {
-    		console.log(graphArrays)
+    		// console.log(graphArrays)
     		
 
-    		console.log('hasjfdh')
+    		// console.log('hasjfdh')
     		graphArrays.sentimentFreq = {};
     		graphArrays.sentimentFreq.littlePositive = 0;
     		graphArrays.sentimentFreq.positive = 0;
@@ -254,7 +254,7 @@ function SortAnalysis (){
 
 				
 				graphArrays.sentimentFreq.negative += theWord.freq
-				console.log(theWord.freq)
+				// console.log(theWord.freq)
 
     		} else if( theWord.score <= -0.6){
 
@@ -272,7 +272,7 @@ function SortAnalysis (){
     sentimentFreq();
 
 
-    console.log(graphArrays);
+    // console.log(graphArrays);
  	return graphArrays;
 
 	};
