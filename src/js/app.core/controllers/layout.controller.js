@@ -1,8 +1,9 @@
 import $ from 'jquery';
-export default function Layout (UserService, $rootScope) {
+export default function Layout ($rootScope, $state, UserService) {
     let vm = this;
     vm.logOut = logOut;
     vm.loggedIn = false;
+    vm.userSettings = edit;
 
     init();
 
@@ -19,7 +20,18 @@ export default function Layout (UserService, $rootScope) {
         vm.loggedIn = false;
     }
 
-    $(document).on('click', 'header nav .new', function(){ $(this).toggleClass('active'); });
+    function edit () {
+        $('.overlay').animate({ 'top' : 0}, 750, function(){
+            $state.go('settings');
+        });
+    }
+
+    $(document)
+        .on('click', 'header nav .new', function(){ $(this).toggleClass('active'); })
+        .on('click', '.hamburger', function(){
+            $(this).toggleClass('is-active');
+            $('nav.mobile').toggleClass('active');
+        });
 }
 
-Layout.$inject = ['UserService', '$rootScope'];
+Layout.$inject = ['$rootScope', '$state', 'UserService'];

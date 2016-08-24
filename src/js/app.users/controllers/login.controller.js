@@ -4,9 +4,10 @@ export default function Login ($http, $state, $cookies, SERVER, UserService){
     function login (user){
         if (typeof user === 'string')
             switch (user) {
+                // case 'fbUser' : FB.login()
                 case 'fbUser' : FB.getLoginStatus(resp => facebookLogin(resp))
             }
-        UserService.login(user).then(resp => {
+        else UserService.login(user).then(resp => {
             console.log(resp);
             $cookies.put('access_token', resp.data.access_token);
             $state.go('root.profile');
@@ -16,6 +17,8 @@ export default function Login ($http, $state, $cookies, SERVER, UserService){
     }
     function facebookLogin (response){
         console.log(response);
+        $cookies.put('access_token', response.authResponse.accessToken);
+        $state.go('root.profile');
         if (response.status === 'connected'){
             // Logged into your app and Facebook.
             console.log('Welcome!  Fetching your information.... ');

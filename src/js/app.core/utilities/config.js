@@ -25,6 +25,11 @@ export default function config ($stateProvider, $urlRouterProvider){
             templateUrl: 'templates/profile.template.htm',
             controller: 'ProfileController as vm'
         })
+        .state('settings', {
+            url: '/profile/settings',
+            templateUrl: 'templates/profile.settings.template.htm',
+            controller: 'ProfileSettingsController as vm'
+        })
         .state('root.register', {
             url: '/register',
             templateUrl: 'templates/register.template.htm',

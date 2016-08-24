@@ -8,6 +8,7 @@ export default function Profile ($http, $state, $cookies, SERVER, UserService){
             };
         UserService.profile(config).then(resp => {
             console.log(resp);
+            vm.user = resp.data
         });
     }
 }
