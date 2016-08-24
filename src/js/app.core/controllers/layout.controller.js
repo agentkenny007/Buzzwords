@@ -4,15 +4,16 @@ export default function Layout ($rootScope, $state, UserService) {
     vm.logOut = logOut;
     vm.loggedIn = false;
     vm.userSettings = edit;
+    vm.submitSearch = search;
 
-    init();
-
-    $rootScope.$on('loginChange', (event, status) => {
-        vm.loggedIn = status;
-    });
-
-    function init () {
+    (function init () {
         vm.loggedIn = UserService.isLoggedIn();
+    })();
+
+    function edit () {
+        $('.overlay').animate({ 'top' : 0}, 750, function(){
+            $state.go('settings');
+        });
     }
 
     function logOut () {
@@ -20,10 +21,8 @@ export default function Layout ($rootScope, $state, UserService) {
         vm.loggedIn = false;
     }
 
-    function edit () {
-        $('.overlay').animate({ 'top' : 0}, 750, function(){
-            $state.go('settings');
-        });
+    function search (term){
+        $state.go('root.create', { term: term });
     }
 
     $(document)
@@ -32,6 +31,10 @@ export default function Layout ($rootScope, $state, UserService) {
             $(this).toggleClass('is-active');
             $('nav.mobile').toggleClass('active');
         });
+
+    $rootScope.$on('loginChange', (event, status) => {
+        vm.loggedIn = status;
+    });
 }
 
 Layout.$inject = ['$rootScope', '$state', 'UserService'];

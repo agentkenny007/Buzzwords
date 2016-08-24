@@ -15,7 +15,11 @@
         <span class="sep"></span>
         <div class="new" tabindex="0">
             <span>New Campaign</span>
-            <input type="text" placeholder="enter #topic, press enter">
+            <form ng-submit="vm.submitSearch(vm.searchTerm)">
+            
+            <input type="text" placeholder="enter #topic, press enter" ng-model="vm.searchTerm">
+            </form>
+            
             <span class="sep"></span>
         </div>
         <ul class="user login display-for-desktop" ng-show="vm.loggedIn">
