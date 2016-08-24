@@ -27,7 +27,7 @@ function ChartService (){
 		});  
 
 		viewmodel.neqativeWordfreq = obj.words.freqNegative.map(function(x){
-			console.log(x);
+			// console.log(x);
 			return x.freq;
 		});
 
@@ -36,7 +36,7 @@ function ChartService (){
 		});  
 
 		viewmodel.positiveWordfreq = obj.words.freqPositive.map(function(x){
-			console.log(x);
+			// console.log(x);
 			return x.freq;
 		});
 
@@ -56,36 +56,36 @@ function ChartService (){
 
 
 	    viewmodel.arrayOfgraphs = [`<h1>Posts Sentiments</h1><canvas id="pie" class="chart chart-pie"
-  chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
+  chart-data="vm.postData" chart-labels="vm.labels" chart-options="vm.options">
 </canvas> `, `<h1>Word Sentiments</h1><canvas id="pie" class="chart chart-pie"
-  chart-data="vm.wordData" chart-labels="vm.labels" chart-options="options">
+  chart-data="vm.wordData" chart-labels="vm.labels" chart-options="vm.options">
 </canvas> `, `<h1>Positive Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
-  chart-data="vm.positiveWordfreq" chart-labels="vm.positiveWordfreqLabel" chart-options="options">
+  chart-data="vm.positiveWordfreq" chart-labels="vm.positiveWordfreqLabel" chart-options="vm.options">
 </canvas> `,`<h1>Negative Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
-  chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="options">
+  chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="vm.options">
 </canvas> `,`<h1> Overall Sentiment Freqency</h1><canvas id="radar" class="chart chart-radar"
-  chart-data="vm.freqRadardata" chart-options="options" chart-labels="vm.freqRadarlabels">
+  chart-data="vm.freqRadardata" chart-options="" chart-labels="vm.freqRadarlabels">
 </canvas>  `];
 
-	   	viewmodel.piePost = `<h1>Posts Sentiments</h1><canvas id="pie" class="chart chart-pie"
-  chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
-</canvas> `  
+// 	   	viewmodel.piePost = `<h1>Posts Sentiments</h1><canvas id="pie" class="chart chart-pie"
+//   chart-data="vm.postData" chart-labels="vm.labels" chart-options="options">
+// </canvas> `  
 		
-	   	viewmodel.pieWord = `<h1>Word Sentiments</h1><canvas id="pie" class="chart chart-pie"
-  chart-data="vm.wordData" chart-labels="vm.labels" chart-options="options">
-</canvas> `
+// 	   	viewmodel.pieWord = `<h1>Word Sentiments</h1><canvas id="pie" class="chart chart-pie"
+//   chart-data="vm.wordData" chart-labels="vm.labels" chart-options="options">
+// </canvas> `
 
-		viewmodel.PolradarwordsMCP = `<h1>Positive Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
-  chart-data="vm.positiveWordfreq" chart-labels="vm.positiveWordfreqLabel" chart-options="options">
-</canvas> `   
+// 		viewmodel.PolradarwordsMCP = `<h1>Positive Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
+//   chart-data="vm.positiveWordfreq" chart-labels="vm.positiveWordfreqLabel" chart-options="options">
+// </canvas> `   
 
-		viewmodel.PolradarwordsMCN = `<h1>Negative Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
-  chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="options">
-</canvas> `
+// 		viewmodel.PolradarwordsMCN = `<h1>Negative Sentiment Freqency</h1><canvas id="polar-area" class="chart chart-polar-area"
+//   chart-data="vm.neqativeWordfreq" chart-labels="vm.neqativeWordfreqLabel" chart-options="options">
+// </canvas> `
 											
-		viewmodel.PolradarWordfreq = `<h1> Overall Sentiment Freqency</h1><canvas id="radar" class="chart chart-radar"
-  chart-data="vm.freqRadardata" chart-options="options" chart-labels="vm.freqRadarlabels">
-</canvas>  `
+// 		viewmodel.PolradarWordfreq = `<h1> Overall Sentiment Freqency</h1><canvas id="radar" class="chart chart-radar"
+//   chart-data="vm.freqRadardata" chart-options="options" chart-labels="vm.freqRadarlabels">
+// </canvas>  `
 
 	};
 
