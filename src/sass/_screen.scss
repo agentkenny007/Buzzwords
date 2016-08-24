@@ -1,0 +1,39 @@
+@media screen and (max-width: 650px) {
+    .container.home header {
+        .graphic.logo {
+            width: 275px;
+            padding-top: 256px;
+            background-size: 275px 256px;
+            margin-left: -137.5px;
+        }
+        .spacer {
+            height: 275px;
+        }
+    }
+
+}
+@media screen and (max-width: 475px) {
+    .container.home header {
+        .graphic.logo {
+            width: 185px;
+            padding-top: 172px;
+            background-size: 185px 172px;
+            margin-left: -92.5px;
+        }
+        .spacer {
+            height: 185px;
+        }
+    }
+
+}
+@media screen and (max-width: 800px) {
+    .display-for-desktop {
+        display: none;
+    }
+
+}
+@media screen and (min-width: 801px) {
+    .display-for-mobile {
+        display: none;
+    }
+}
