@@ -2,9 +2,9 @@
     <nav class="mobile">
         <ul>
             <li><a ui-sref=".home">Home</a></li>
-            <li ng-show="vm.loggedIn"><a ui-sref=".profile">My Campaigns</a></li>
-            <li><a ui-sref=".create">New Campaign</a></li>
-            <li ng-show="vm.loggedIn"><a class="log-out" ui-sref=".home">Log Out</a></li>
+            <li ng-show="vm.loggedIn"><a ng-click="vm.userSettings()">Account Settings</a></li>
+            <li ng-show="vm.loggedIn"><button ui-sref=".profile">My Campaigns</button></li>
+            <li ng-show="vm.loggedIn"><button class="log-out" ng-click="vm.logOut()">Log Out</button></li>
             <li ng-hide="vm.loggedIn"><a ui-sref=".login">Log In</a></li>
             <li ng-hide="vm.loggedIn"><a ui-sref=".register">Register</a></li>
         </ul>
@@ -18,18 +18,26 @@
             <input type="text" placeholder="enter #topic, press enter">
             <span class="sep"></span>
         </div>
-        <ul class="user login" ng-show="vm.loggedIn">
+        <ul class="user login display-for-desktop" ng-show="vm.loggedIn">
+            <span class="sep"></span>
+            <li><button ng-click="vm.userSettings()">Account Settings</button></li>
             <span class="sep"></span>
             <li><a ui-sref=".profile">My Campaigns</a></li>
             <span class="sep"></span>
             <li><button class="log-out" ng-click="vm.logOut()">Log Out</button></li>
         </ul>
-        <ul class="guest login" ng-hide="vm.loggedIn">
+        <ul class="guest login display-for-desktop" ng-hide="vm.loggedIn">
             <span class="sep"></span>
             <li><a ui-sref=".login">Log In</a></li>
             <span class="sep"></span>
             <li><a ui-sref=".register">Register</a></li>
         </ul>
+        <button class="hamburger hamburger--elastic display-for-mobile" type="button">
+            <span class="sep"></span>
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
     </nav>
     <section class="spacer"></section>
     <a ui-sref=".home" class="graphic logo">GrapeVine</a>
@@ -41,3 +49,4 @@
         <p>&copy; 2016 | GrapeVine.</p>
     </div>
 </footer>
+<div class="overlay"></div>
