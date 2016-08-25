@@ -2,8 +2,8 @@
     <nav class="mobile">
         <ul>
             <li><a ui-sref=".home">Home</a></li>
-            <li ng-show="vm.loggedIn"><a ng-click="vm.userSettings()">Account Settings</a></li>
-            <li ng-show="vm.loggedIn"><button ui-sref=".profile">My Campaigns</button></li>
+            <li ng-show="vm.loggedIn"><button ng-click="vm.userSettings()">Account Settings</button></li>
+            <li ng-show="vm.loggedIn"><a ui-sref=".profile">My Campaigns</a></li>
             <li ng-show="vm.loggedIn"><button class="log-out" ng-click="vm.logOut()">Log Out</button></li>
             <li ng-hide="vm.loggedIn"><a ui-sref=".login">Log In</a></li>
             <li ng-hide="vm.loggedIn"><a ui-sref=".register">Register</a></li>
@@ -15,12 +15,10 @@
         <span class="sep"></span>
         <div class="new" tabindex="0">
             <span>New Campaign</span>
-            <form ng-submit="vm.submitSearch(vm.searchTerm)">
-            
-            <input type="text" placeholder="enter #topic, press enter" ng-model="vm.searchTerm">
+            <form ng-submit="vm.submitSearch(searchTerm)">
+                <input type="text" placeholder="enter #topic, press enter" ng-model="searchTerm">
+                <span class="sep"></span>
             </form>
-            
-            <span class="sep"></span>
         </div>
         <ul class="user login display-for-desktop" ng-show="vm.loggedIn">
             <span class="sep"></span>
