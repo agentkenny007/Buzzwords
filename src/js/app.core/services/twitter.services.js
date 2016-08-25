@@ -13,12 +13,12 @@ function TweetService($http, $base64, SERVER, $cookies) {
    
 		return $http({
 			method: 'POST',
-			url: SERVER.URL + 'grape',
+			url: SERVER.URL + 'grape/get ',
 			headers:{
 			
 				'Authorization': "Bearer " + token 
 			},data:{
-				"grapeObj": term,
+				// "grapeObj": term,
 				"campaigns_id": 1
 			}
 			})
