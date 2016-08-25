@@ -30,6 +30,12 @@ export default function config ($stateProvider, $urlRouterProvider){
             templateUrl: 'templates/register.template.htm',
             controller: 'RegisterController as vm'
         })
+        .state('root.campaign', {
+            url: '/campaign/:camp_id',
+            templateUrl: 'templates/campaigns.template.htm',
+            controller: 'CampaignsController as vm'
+        })
+
 
 
 
