@@ -82,18 +82,42 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
     
     vm.sendGrape = sendGrape;
     vm.sendTonewCamp = sendTonewCamp;
+    vm.newCampform = newCampform;
 
     function sendGrape (obj, camp_id){
     	console.log(obj, camp_id)
     	PostAnalysis.postTocampaign(obj, camp_id).then((res)=>{
     		console.log(res);
+    		$('.add_div').html(" ");
     	});
     }
 
-    function sendTonewCamp (text) {
+    function sendTonewCamp (title, desc) {
     	vm.showForm = true;
+    	let newCamp_id;
+    	console.log(title, desc)
+    	    	PostAnalysis.createCampaigns(title, desc).then((res)=>{
+
+    		console.log(res.data)
+    		newCamp_id = res.data.id;
+	    	PostAnalysis.postTocampaign(vm.analysisArray, newCamp_id).then((res)=>{
+    		console.log(res.data);
+    	}).then((res)=>{
+    		PostAnalysis.getGrapes(newCamp_id).then((res)=>{
+    			console.log(newCamp_id);
+    			console.log(res.data);
+    			$('.add_div').html(" ");
+    		});
+    	});
+
+    	});
     }
 
+    function newCampform (title, desc) {
+    	vm.showForm = true;
+
+    	
+    }
  
  
 

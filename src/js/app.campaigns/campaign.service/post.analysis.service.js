@@ -11,8 +11,17 @@ function PostAnalysis ($http, SERVER, $cookies){
 
 	}
 
-	function createCampaigns(obj){
-		return $http.post(SERVER.URL + 'campaigns',{title: obj.title, description: obj.desc});
+	function createCampaigns(title, desc){
+		let token = $cookies.get('access_token')
+		console.log(token);
+   		return $http({
+			method: 'POST',
+			url: SERVER.URL + 'campaigns',
+			headers:{
+			
+				'Authorization': "Bearer " + token 
+			}, data: {title: title, description: desc}
+			});
 
 	}
 
@@ -42,8 +51,8 @@ function PostAnalysis ($http, SERVER, $cookies){
 
 	}
 
-		function getGrapes (obj) {
-		return $http.post(SERVER.URL + 'grape/get',{campaigns_id: obj.camp_id});
+		function getGrapes (camp_id) {
+		return $http.post(SERVER.URL + 'grape/get',{campaigns_id: camp_id});
 
 	}
 };
