@@ -1,3 +1,4 @@
+import $ from 'jquery';
 export default function Settings ($cookies, $http, $state, $window, SERVER, UserService){
     let vm = this,
         token = $cookies.get('access_token'),
@@ -5,8 +6,10 @@ export default function Settings ($cookies, $http, $state, $window, SERVER, User
             headers: { Authorization: 'Bearer ' + token }
         };
     vm.update = update;
+    vm.goBack = browserBack;
 
     (function init (){
+        $('.frame').fadeIn('slow');
         UserService.profile(config).then(resp => {
             console.log(resp);
             vm.user = resp.data;
@@ -25,8 +28,13 @@ export default function Settings ($cookies, $http, $state, $window, SERVER, User
         };
         UserService.settings(settings).then(resp => {
             console.log(resp);
-            $window.history.back();
-        }, err => { $window.history.back()});
+            browserBack();
+        }, err => { browserBack(); });
+    }
+
+    function browserBack (){
+        $('.frame').fadeOut('slow');
+        $('.flash').fadeIn(1200, function(){ $window.history.back() });
     }
 }
 
