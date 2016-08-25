@@ -48,10 +48,10 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
 			
 			vm.chartInjector()
 
-				TweetService.campGet(vm.analysisArray).then((res)=>{
-		console.log('hi shshshshshsh')
-		console.log(res.data);
-	})   
+	// 			TweetService.campGet(vm.analysisArray).then((res)=>{
+	// 	console.log('hi shshshshshsh')
+	// 	console.log(res.data);
+	// })   
 		});
 
     vm.selectCampaigns = selectCampaigns;
@@ -100,9 +100,11 @@ export default function Create ($http, $state, SERVER, $scope, $compile, $stateP
 
     		console.log(res.data)
     		newCamp_id = res.data.id;
+    		
 	    	PostAnalysis.postTocampaign(vm.analysisArray, newCamp_id).then((res)=>{
     		console.log(res.data);
     	}).then((res)=>{
+
     		PostAnalysis.getGrapes(newCamp_id).then((res)=>{
     			console.log(newCamp_id);
     			console.log(res.data);
