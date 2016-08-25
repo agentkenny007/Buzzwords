@@ -10,7 +10,17 @@
             height: 275px;
         }
     }
-
+    .container main .search {
+        height: 190px;
+        padding-top: 70px;
+        background: url(../images/curve-mobile.png) 0/100% 260px no-repeat;
+        input {
+            font-size: 28px;
+        }
+        button {
+            font-size: 20px;
+        }
+    }
 }
 @media screen and (max-width: 475px) {
     .container.home header {

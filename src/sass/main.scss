@@ -137,6 +137,9 @@ html, body { height: 100%; }
                 height: 58px;
                 outline: 0;
                 z-index: 1;
+                form {
+                    display: inline-block;
+                }
                 input {
                     cursor: pointer;
                     position: absolute;
@@ -285,14 +288,25 @@ html, body { height: 100%; }
         }
     }
     main {
-        h1 {
-            margin: 0;
-            padding: 0.75em;
+        h1, h2 {
+            margin: 0 0 0.5em;
+            padding: 0.15em;
+            text-align: center;
+            &.title {
+                color: $pink;
+                text-shadow: 0 3px 30px #fff, 0 1px 2px $darkgrape, 0 2px 1px $darkpink;
+                font-size: 2.75em;
+            }
+            &.sub {
+                font-size: 1.75em;
+                margin: 0;
+            }
         }
         .splash-content {
             overflow: auto;
-            padding: 0 20px;
+            padding: 2em 20px;
             background: white;
+            font-size: 1.275em;
         }
         .display {
             position: relative;
@@ -309,7 +323,7 @@ html, body { height: 100%; }
                 background: url(../images/sep-below.png) 0/100% 38px no-repeat;
             }
         }
-        .profile {
+        .page {
             margin: 20px;
             .content {
                 background: white;
@@ -429,11 +443,12 @@ html, body { height: 100%; }
         }
         .settings {
             position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
             height: 100%;
             background: url(../images/background-dark.png) center/cover no-repeat;
-            top: 0;
             color: white;
-            width: 100%;
             text-align: center;
         }
         .vines {
@@ -445,40 +460,35 @@ html, body { height: 100%; }
             z-index: -1;
         }
     }
-
-    .camp_container{
-
-        margin: 20% auto;
-        height:70%;
-        width: 70%;
+    .camp_container {
+        margin: auto;
         background-color: #FFF2FF;
         border-radius: 7px;
     }
-
-
-    .chart_holder{
+    .chart_holder {
         height:40%;
         width: 40%;
         background-color: white;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .loading {
+        display: block;
+        width: 100%;
+        height: 70px;
+        background: url(../images/throbber.gif) center / contain no-repeat;
+    }
+    .overlay {
+        position: fixed;
+        left: 0;
+        top: -120%;
+        width: 100%;
+        height: 100%;
+        background: url(../images/background-dark.png) center/cover no-repeat;
+        border-bottom: 1px solid $pink;
+        z-index: 10;
+        @include box-shadow(0 0 5px #fff);
+        @include filter(drop-shadow(0 0 50px #000));
+    }
     footer {
         position: absolute;
         left: 0;
