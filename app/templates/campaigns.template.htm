@@ -1,1 +1,12 @@
-<div class="camp_container">Hello world!!</div>
+<div class="camp_container">
+<h1>{{vm.currentCamp.title}}</h1>
+Your Grapes
+<div ng-repeat="grape in vm.grapes">
+	<h3 ng-click="vm.displayGrape(grape.id)" >{{grape.grapeObj.term}}</h3>
+</div>
+
+<div id="char" class="camp_container"></div>
+
+</div>
+
+
