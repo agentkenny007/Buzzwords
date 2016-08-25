@@ -22,6 +22,7 @@ export default function run ($rootScope, $state, $window, UserService){
     $rootScope.$on('$stateChangeSuccess', (event, toState) => {
         $('.container').removeClass('home')
         $('nav.mobile').removeClass('active')
+        $('.hamburger').removeClass('is-active')
         $rootScope.$broadcast('loginChange', UserService.isLoggedIn())
     })
 }
