@@ -1,6 +1,6 @@
 <main>
     <section class="settings">
-        <h1>Welcome, {{ vm.user.firstname || vm.user.email }}!</h1>
+        <h1 class="title">Welcome, {{ vm.user.firstname || vm.user.email }}!</h1>
         <form ng-submit="vm.update()">
             <div>
                 <input type="text" placeholder="First name" ng-model="vm.user.firstname">
@@ -14,6 +14,7 @@
                 <input type="checkbox" id="public" ng-model="vm.user.public">
             </div>
             <div><input type="submit" value="save settings"></div>
+            <div><button ng-click="$window.history.back()">exit</button></div>
         </form>
         <div class="content">
         </div>
