@@ -54,6 +54,7 @@ body {
 html, body { height: 100%; }
 .container {
     position: relative;
+    min-width: 250px;
     min-height: 100%;
     padding: 20px 0;
     padding-bottom: 50px;
@@ -308,6 +309,69 @@ html, body { height: 100%; }
             background: white;
             font-size: 1.275em;
         }
+        .campaign {
+            h3.grape {
+                cursor: pointer;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+                transition-timing-function: cubic-bezier(.72,1,0,.72);
+                transition-timing-function: cubic-bezier(.72,1.93,0,.72);
+                @include transition(all 0.5s);
+                @include transition(all 0.5s cubic-bezier(.72,1.93,0,.72));
+                &:hover, &.selected {
+                    color: $darkgrape;
+                    font-size: 1.5em;
+                    @include filter(drop-shadow(0 0 15px $pink));
+                }
+                &.selected {
+                    padding-left: 2em;
+                }
+            }
+        }
+        .create {
+            .add_div {
+                button {
+                    font-size: 1.3em;
+                    color: $pink;
+                    text-shadow: 0 1px 1px $darkgrape;
+                    border: 1px solid darken($darkgrape, 5%);
+                    padding: 0.275em;
+                    outline: 0;
+                    background: darken($grape, 5%);
+                    background: rgba(59,0,46,1);
+                    background: -moz-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(59,0,46,1)), color-stop(50%, rgba(129,25,124,1)), color-stop(100%, rgba(59,0,46,1)));
+                    background: -webkit-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -o-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -ms-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: linear-gradient(to right, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b002e', endColorstr='#3b002e', GradientType=1 );
+                    @include border-radius(4px);
+                    @include box-shadow(0 2px 2px lighten($darkgrape, 8%));
+                    &:hover {
+                        color: white;
+                        background: rgba(59,0,46,1);
+                        background: -moz-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(59,0,46,1)), color-stop(15%, rgba(129,25,124,1)), color-stop(48%, rgba(255,153,252,1)), color-stop(85%, rgba(129,25,124,1)), color-stop(100%, rgba(59,0,46,1)));
+                        background: -webkit-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -o-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -ms-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: linear-gradient(to right, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b002e', endColorstr='#3b002e', GradientType=1 );
+                    }
+                    &:active {
+                        color: lighten($grape, 15%);
+                        background: rgba(129,25,124,1);
+                        background: -moz-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(129,25,124,1)), color-stop(30%, rgba(59,0,46,1)), color-stop(70%, rgba(59,0,46,1)), color-stop(100%, rgba(129,25,124,1)));
+                        background: -webkit-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -o-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -ms-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: linear-gradient(to right, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81197c', endColorstr='#81197c', GradientType=1 );
+                    }
+                }
+            }
+        }
         .display {
             position: relative;
             background: white;
@@ -331,6 +395,19 @@ html, body { height: 100%; }
                 padding: 20px;
                 @include box-shadow(0 0 5px black);
                 @include border-radius(10px);
+            }
+        }
+        .profile {
+            .camp {
+                margin-bottom: 1em;
+                a {
+                    font-size: 1.4em;
+                    color: $darkgrape;
+                    text-decoration: none;
+                    &:hover {
+                        color: $grape;
+                    }
+                }
             }
         }
         .reglogin {
@@ -594,7 +671,7 @@ html, body { height: 100%; }
     &.home {
         header {
             nav {
-                top: -169px;
+                top: -100px;
                 padding: 0;
                 @include transition(all 0.675s ease);
             }
@@ -643,6 +720,9 @@ html, body { height: 100%; }
             }
         }
     }
+}
+.selectCampdiv {
+    margin-top: 2em;
 }
 
 @import 'screen';
