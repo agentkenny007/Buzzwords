@@ -1,5 +1,5 @@
 const S = {
-    // URL: 'https://buzzwords-app.herokuapp.com/'
+    //URL: 'https://buzzwords-app.herokuapp.com/'
     URL: 'http://127.0.0.1:3553/'
 };
 

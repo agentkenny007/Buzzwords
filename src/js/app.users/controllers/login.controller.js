@@ -25,6 +25,7 @@ export default function Login ($http, $state, $cookies, SERVER, UserService){
               'into Facebook.';
         }
     }
+
     function login (user){
         if (typeof user === 'string')
             switch (user) {
@@ -36,9 +37,11 @@ export default function Login ($http, $state, $cookies, SERVER, UserService){
             $cookies.put('access_token', resp.data.access_token);
             $state.go('root.profile');
         }, err => {
-            alert(err.data.error);
+            // alert(err.data.error);
+            console.log(err);
         });
     }
+
     function register (){
         $state.go('root.register');
     }

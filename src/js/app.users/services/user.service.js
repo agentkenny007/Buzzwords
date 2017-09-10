@@ -18,6 +18,7 @@ export default function User (SERVER, $http, $cookies, $state) {
     function logOut () {
         $cookies.remove('access_token')
         console.log('Logged out!')
+        if ($state.current.name === 'root.profile') $state.go('root.home')
     }
 
     function isLoggedIn () {

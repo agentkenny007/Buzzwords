@@ -40,11 +40,6 @@ export default function config ($stateProvider, $urlRouterProvider){
             templateUrl: 'templates/campaigns.template.htm',
             controller: 'CampaignsController as vm'
         })
-
-
-
-
-
     $urlRouterProvider.otherwise('/');
 }
 

@@ -29,7 +29,7 @@ export default function Settings ($cookies, $http, $state, $window, SERVER, User
         UserService.settings(settings).then(resp => {
             console.log(resp);
             browserBack();
-        }, err => { browserBack(); });
+        }, err => browserBack());
     }
 
     function browserBack (){

@@ -102,7 +102,10 @@
     .container main .search input { font-size: 1.325em; }
 }
 @media screen and (max-width: 270px) {
-    .container header nav .new { display: none; }
+    .container header nav {
+        min-width: 103px;
+        .new { display: none; }
+    }
     .container main .search {
         height: 130px;
         padding-top: 50px;
