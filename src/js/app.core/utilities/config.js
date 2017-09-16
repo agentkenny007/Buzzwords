@@ -6,7 +6,7 @@ export default function config ($stateProvider, $urlRouterProvider){
             controller: 'LayoutController as vm'
         })
         .state('root.create', {
-            url: '/create',
+            url: '/createcampaign/:term',
             templateUrl: 'templates/create.template.htm',
             controller: 'CreateController as vm'
         })
@@ -29,7 +29,16 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/register',
             templateUrl: 'templates/register.template.htm',
             controller: 'RegisterController as vm'
-        });
+        })
+        .state('root.campaign', {
+            url: '/campaign/:camp_id',
+            templateUrl: 'templates/campaigns.template.htm',
+            controller: 'CampaignsController as vm'
+        })
+
+
+
+
 
     $urlRouterProvider.otherwise('/');
 }
