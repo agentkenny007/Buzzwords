@@ -1,1 +1,6 @@
 Profile Page for {{ vm.user.email }}
+
+<div ng-repeat="camp in vm.campaigns" >
+	<a href="/#/campaign/{{camp.id}}"> {{camp.title}}</a>
+	<div>{{camp.description}}</div>
+</div>

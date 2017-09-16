@@ -1,0 +1,29 @@
+<h1>Create a new Campaign</h1>
+
+
+<div id="char" class="camp_container">
+<div class="add_div" >
+
+<button name="addCamp" ng-click="vm.selectCampaigns()">Add to Campaign</button>
+<button ng-click="vm.newCampform()">Add To New Campaign</button>
+
+<div class="selectCampdiv">
+
+<form ng-show="vm.campaign && !vm.showForm">
+	<select ng-show="vm.campaign" ng-model="campId" >
+		<option ng-show="vm.campaign" ng-repeat="camp in vm.campaign" value="{{camp.id}}">{{camp.title}}</option>
+
+	</select>
+	<button ng-click="vm.sendGrape(vm.analysisArray, campId)">Add</button>
+</form>
+
+<form ng-show="vm.showForm">
+  	<input type="text" name="" ng-model="newCampobj.title" placeholder="Title" required="">
+  	<textarea ng-model="newCampobj.desc" placeholder="Description" required=""></textarea>
+	<button ng-click="vm.sendTonewCamp(newCampobj.title,newCampobj.desc)">Add</button>
+</form>
+	</div>
+</div>
+
+</div>
+
