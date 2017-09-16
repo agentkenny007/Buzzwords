@@ -5,6 +5,7 @@ export default function User (SERVER, $http, $cookies, $state) {
     this.logOut         = logOut
     this.isLoggedIn     = isLoggedIn
     this.profile        = profile
+    this.settings       = settings
 
     function register (user) {
         return $http.post(SERVER.URL + 'register', user)
@@ -17,6 +18,7 @@ export default function User (SERVER, $http, $cookies, $state) {
     function logOut () {
         $cookies.remove('access_token')
         console.log('Logged out!')
+        if ($state.current.name === 'root.profile') $state.go('root.home')
     }
 
     function isLoggedIn () {
@@ -25,6 +27,10 @@ export default function User (SERVER, $http, $cookies, $state) {
 
     function profile (config){
         return $http.get(SERVER.URL + 'profile', config)
+    }
+
+    function settings (config){
+        return $http.post(SERVER.URL + 'user', config)
     }
 
 }

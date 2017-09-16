@@ -18,7 +18,7 @@ const gulp        = require('gulp'),
 // Function to handle errors.
 // Prevents Gulp from stopping.
 var handleError = function(err) {
-  notify.onError("Doh! Check iTerm for details!")(err);
+  notify.onError("Compiler Error! Check terminal for details.")(err);
   console.log(chalk.white.bgRed(' <error> ------------------------ '));
   console.log(chalk.white(err.message));
   console.log(chalk.white.bgRed(' </error> ----------------------- '));
@@ -69,3 +69,6 @@ gulp.task('build', ['sass', 'browserify']);
 
 // Starts the development process
 gulp.task('start', ['build', 'watch', 'server']);
+
+// Sets default command to 'start'
+gulp.task('default', ['start']);

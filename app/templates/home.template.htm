@@ -1,21 +1,29 @@
 <section class="vines"></section>
 <section class="search">
-    <form>
-        <input type="text" placeholder="enter #topic"><br>
-        <button>get the grapes</button>
+    <form ng-submit="vm.getGrapes(buzzword)">
+        <input type="text" placeholder="enter #topic" ng-model="buzzword"><br>
+        <button type="submit">get the grapes</button>
     </form>
     <span class="sep"></span>
 </section>
 <section class="display"><span class="sep"></span></section>
-<section class="content">
+<section class="splash-content">
     <h1>Welcome to GrapeVine</h1>
-    <p>Use our app to see the light in which people are mentioning your brand, company, or favourite artist.</p>
+    <h2>What's the rumor mill churning out these days?</h2>
+
     <h3>About GrapeVine</h3>
+    <p>GrapeVine is a miniature sentiment analysis app.</p>
+    <p>Use the app to see the light in which people are mentioning your brand, company, favourite artist, etc.</p>
     <p>Have you ever wanted an easy way to know what people are saying and thinking about your new product? GrapeVine provides an easy solution that will track whether the feedback you get for a particular buzzword is positive or negative.</p>
+    <p>Have you ever wanted a quick way to determine the general public reaction to a particular current event? GrapeVine collects recent mentions and posts containing phrases involving your topic and displays them in a concise graphical format.</p>
     <h3>How to use GrapeVine</h3>
     <ol>
         <li>Enter a keyword or buzzword to search.</li>
-        <li>See how many good grapes you get for your query vs. how many bad grapes there are.</li>
-        <li>Add the buzzword to your campaigns to keep track of what people are saying.</li>
+        <li>Retrieve the sentiment analysis to determine the ratio of positive, negative, and neutral responses for your buzzword.</li>
+        <li>Add the buzzword or "grape" to your campaigns to keep track of what people are saying.</li>
+        <li>Track your campaigns by retrieving new sentiments for your grapes iteratively over a period of time.</li>
+        <li>View the campaigns of other public users and share your comments.</li>
     </ol>
+    <h3>How does it work?</h3>
+    <p>GrapeVine searches twitter and tumblr for tweets, mentions, posts, captions, and answers concerning the given topic. Then, with that data, GrapeVine uses a special API to run a sentiment analysis on each tweet or tumblr post to receive a sentiment score. We use that score as well as some other cool generated data to provide the user with a detailed analysis of what people are saying about the buzzword provided.</p>
 </section>

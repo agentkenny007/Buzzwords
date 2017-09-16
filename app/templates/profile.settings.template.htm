@@ -1,0 +1,25 @@
+<main>
+    <section class="settings">
+        <div class="frame">
+            <h1 class="title">Welcome, {{ vm.user.firstname || vm.user.email }}!</h1>
+            <div class="content">
+                <form ng-submit="vm.update()">
+                    <div class="name">
+                        <input type="text" placeholder="First name" ng-model="vm.user.firstname">
+                        <input type="text" placeholder="Last name" ng-model="vm.user.lasname">
+                    </div>
+                    <div><input type="text" placeholder="Email" ng-model="vm.user.email"></div>
+                    <div><input type="text" placeholder="Password" ng-model="vm.user.password"></div>
+                    <div><input type="text" placeholder="Verify password"></div>
+                    <div>
+                        <label for="#public">Public profile</label>
+                        <input type="checkbox" id="public" ng-model="vm.user.public">
+                    </div>
+                    <div><input class="button" type="submit" value="save settings"></div>
+                    <div><button class="button" ng-click="vm.goBack()">exit</button></div>
+                </form>
+            </div>
+        </div>
+        <div class="flash"></div>
+    </section>
+</main>

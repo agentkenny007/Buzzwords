@@ -1,7 +1,7 @@
 import $ from 'jquery'
-export default function run ($rootScope, $state, UserService, $window){
+export default function run ($rootScope, $state, $window, UserService){
     (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0]
+       let js, fjs = d.getElementsByTagName(s)[0]
        if (d.getElementById(id)) return
        js = d.createElement(s); js.id = id; js.async = true
        js.src = "//connect.facebook.net/en_US/sdk.js"
@@ -21,8 +21,10 @@ export default function run ($rootScope, $state, UserService, $window){
 
     $rootScope.$on('$stateChangeSuccess', (event, toState) => {
         $('.container').removeClass('home')
+        $('nav.mobile').removeClass('active')
+        $('.hamburger').removeClass('is-active')
         $rootScope.$broadcast('loginChange', UserService.isLoggedIn())
     })
 }
 
-run.$inject = ['$rootScope', '$state', 'UserService', '$window']
+run.$inject = ['$rootScope', '$state', '$window', 'UserService']

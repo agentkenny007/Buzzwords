@@ -2,8 +2,10 @@
     <form ng-submit="vm.login(user)">
         <input type="email" ng-model="user.email" placeholder="Email"><br>
         <input type="password" class="password" ng-model="user.password" placeholder="Password"><br>
-        <button>Login</button>
+        <button type="submit">Login</button>
+        <span style="color: white"> | </span>
+        <button type="button" ng-click="vm.register()">Register</button>
     </form>
     <hr>
-    <fb:login-button scope="public_profile,email" onlogin="login('fbUser')"></fb:login-button>
+    <button ng-click="vm.login('fbUser')">Log in with Facebook</button>
 </section>

@@ -19,7 +19,6 @@ export default function Campaigns ($http, $state, SERVER, $scope, $compile, $sta
   	vm.options = {
         legend: {
             display: true,
- 
         }
     }
 
@@ -30,10 +29,8 @@ export default function Campaigns ($http, $state, SERVER, $scope, $compile, $sta
             vm.campaigns = res.data;
             console.log(res.data);
         	vm.campaigns.forEach((camp)=>{
-    		
     		if  (vm.camp_id == camp.id){
-    			
-    			vm.currentCamp = camp 
+    			vm.currentCamp = camp
     			console.log(vm.currentCamp)
     		}
     	});
@@ -61,20 +58,18 @@ export default function Campaigns ($http, $state, SERVER, $scope, $compile, $sta
     		  let canvas_html = graph;
     		  var element = angular.element(canvas_html);
 			  $compile(element)($scope);
-			 
 			  $('#char').append(element);
 			  console.log(graph, vm.neqativeWordfreq)
     	});
-    	
+
     };
 
-    vm.displayGrape = displayGrape 
+    vm.displayGrape = displayGrape
 
     function displayGrape (grape_id){
     	vm.grapes.forEach((grape)=>{
     		console.log(grape)
     		if  (grape_id == grape.id){
-    			
     			vm.graphAnalysis = SortAnalysis.sortObj(grape.grapeObj.tweets, grape.grapeObj.tumblrPosts);
     			ChartService.chartGenerator(vm.graphAnalysis, vm);
 
@@ -84,10 +79,10 @@ export default function Campaigns ($http, $state, SERVER, $scope, $compile, $sta
     	});
     }
 
-
-
-
-    
+    $(document).on('click', '.grape', function(){
+        $('.grape.selected').removeClass('selected');
+        $(this).addClass('selected');
+    });
 }
 
 Campaigns.$inject = ['$http', '$state', 'SERVER','$scope', '$compile', '$stateParams', 'PostAnalysis', 'SortAnalysis', 'ChartService'];

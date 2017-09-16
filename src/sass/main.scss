@@ -1,3 +1,5 @@
+@import '../../node_modules/hamburgers/_sass/hamburgers/hamburgers';
+
 $grape: #81197B;
 $darkgrape: #3B002E;
 $lightgrape: #bf9cc6;
@@ -52,6 +54,7 @@ body {
 html, body { height: 100%; }
 .container {
     position: relative;
+    min-width: 250px;
     min-height: 100%;
     padding: 20px 0;
     padding-bottom: 50px;
@@ -101,12 +104,43 @@ html, body { height: 100%; }
                     }
                 }
             }
+            .hamburger {
+                position: relative;
+                float: right;
+                right: 70px;
+                width: 66px;
+                padding: 0;
+                outline: 0;
+                .hamburger-box {
+                    top: 8px;
+                    .hamburger-inner,
+                    .hamburger-inner::before,
+                    .hamburger-inner::after {
+                        background-color: $pink;
+                        @include box-shadow(0 1px 2px rgba(0, 0, 0, .5));
+                    }
+                }
+                &:hover {
+                    background: url(../images/nav-hover.jpg) top repeat-x;
+                    opacity: 1;
+                    .hamburger-inner,
+                    .hamburger-inner::before,
+                    .hamburger-inner::after {
+                        background-color: $darkgrape;
+                        @include box-shadow(0 1px 2px rgba(0, 0, 0, .5));
+                    }
+                }
+            }
             .new {
                 position: relative;;
                 float: left;
                 padding: 0 10px;
                 height: 58px;
                 outline: 0;
+                z-index: 1;
+                form {
+                    display: inline-block;
+                }
                 input {
                     cursor: pointer;
                     position: absolute;
@@ -171,8 +205,9 @@ html, body { height: 100%; }
                 position: relative;
                 margin-bottom: 1em;
                 width: 615px;
+                max-width: 80%;
                 padding-top: 182px;
-                background: url(../images/logo-typeface.png) center no-repeat;
+                background: url(../images/logo-typeface.png) center / 100% no-repeat;
                 z-index: 3;
             }
             &.graphic {
@@ -189,20 +224,157 @@ html, body { height: 100%; }
         }
         .spacer { height: 120px; }
     }
-    main {
-        section {
-            background: white;
-        }
-        h1 {
+    nav.mobile {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -385px;
+        width: 375px;
+        max-width: 75%;
+        background: url(../images/mobile-nav-bg.png) center / 100% 100% no-repeat;
+        padding-top: 60px;
+        z-index: 4;
+        @include transition(all 0.5s ease);
+        ul {
             margin: 0;
-            padding: 0.75em;
+            padding: 0;
+            padding-top: 40px;
+            list-style: none;
+            li {
+                height: 58px;
+                padding: 0;
+                a, button {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    color: $pink;
+                    text-align: left;
+                    text-decoration: none;
+                    text-shadow: 0 1px 2px $darkgrape, 0 -1px 1px #fff;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    outline: 0;
+                }
+                button {
+                    border: 0;
+                    background: none;
+                }
+                &:hover {
+                    background: url(../images/nav-hover.jpg) top repeat-x;
+                    border-top: 1px solid $darkpink;
+                    border-bottom: 1px solid white;
+                    @include box-shadow(0 0 15px $darkgrape);
+                    a, button {
+                        color: $darkgrape;
+                        text-shadow: 0 2px 1px #fff, 0 1px 4px $grape;
+                    }
+                }
+                &:active {
+                    background: url(../images/nav-active.jpg) top repeat-x;
+                }
+            }
         }
-        .content {
+        &.active {
+            right: 0;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            left: -9px;
+            top: 0;
+            bottom: 0;
+            width: 9px;
+            background: url(../images/mobile-nav-border.png) repeat-y;
+        }
+    }
+    main {
+        h1, h2 {
+            margin: 0 0 0.5em;
+            padding: 0.15em;
+            text-align: center;
+            &.title {
+                color: $pink;
+                text-shadow: 0 3px 30px #fff, 0 1px 2px $darkgrape, 0 2px 1px $darkpink;
+                font-size: 2.75em;
+            }
+            &.sub {
+                font-size: 1.75em;
+                margin: 0;
+            }
+        }
+        .splash-content {
             overflow: auto;
-            padding: 0 20px;
+            padding: 2em 20px;
+            background: white;
+            font-size: 1.275em;
+        }
+        .campaign {
+            h3.grape {
+                cursor: pointer;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+                transition-timing-function: cubic-bezier(.72,1,0,.72);
+                transition-timing-function: cubic-bezier(.72,1.93,0,.72);
+                @include transition(all 0.5s);
+                @include transition(all 0.5s cubic-bezier(.72,1.93,0,.72));
+                &:hover, &.selected {
+                    color: $darkgrape;
+                    font-size: 1.5em;
+                    @include filter(drop-shadow(0 0 15px $pink));
+                }
+                &.selected {
+                    padding-left: 2em;
+                }
+            }
+        }
+        .create {
+            .add_div {
+                button {
+                    font-size: 1.3em;
+                    color: $pink;
+                    text-shadow: 0 1px 1px $darkgrape;
+                    border: 1px solid darken($darkgrape, 5%);
+                    padding: 0.275em;
+                    outline: 0;
+                    background: darken($grape, 5%);
+                    background: rgba(59,0,46,1);
+                    background: -moz-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(59,0,46,1)), color-stop(50%, rgba(129,25,124,1)), color-stop(100%, rgba(59,0,46,1)));
+                    background: -webkit-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -o-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: -ms-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    background: linear-gradient(to right, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 50%, rgba(59,0,46,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b002e', endColorstr='#3b002e', GradientType=1 );
+                    @include border-radius(4px);
+                    @include box-shadow(0 2px 2px lighten($darkgrape, 8%));
+                    &:hover {
+                        color: white;
+                        background: rgba(59,0,46,1);
+                        background: -moz-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(59,0,46,1)), color-stop(15%, rgba(129,25,124,1)), color-stop(48%, rgba(255,153,252,1)), color-stop(85%, rgba(129,25,124,1)), color-stop(100%, rgba(59,0,46,1)));
+                        background: -webkit-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -o-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: -ms-linear-gradient(left, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        background: linear-gradient(to right, rgba(59,0,46,1) 0%, rgba(129,25,124,1) 15%, rgba(255,153,252,1) 48%, rgba(129,25,124,1) 85%, rgba(59,0,46,1) 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b002e', endColorstr='#3b002e', GradientType=1 );
+                    }
+                    &:active {
+                        color: lighten($grape, 15%);
+                        background: rgba(129,25,124,1);
+                        background: -moz-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(129,25,124,1)), color-stop(30%, rgba(59,0,46,1)), color-stop(70%, rgba(59,0,46,1)), color-stop(100%, rgba(129,25,124,1)));
+                        background: -webkit-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -o-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: -ms-linear-gradient(left, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        background: linear-gradient(to right, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 30%, rgba(59,0,46,1) 70%, rgba(129,25,124,1) 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81197c', endColorstr='#81197c', GradientType=1 );
+                    }
+                }
+            }
         }
         .display {
             position: relative;
+            background: white;
             height: 4em;
             z-index: 1;
             .sep {
@@ -213,6 +385,29 @@ html, body { height: 100%; }
                 bottom: -34px;
                 height: 38px;
                 background: url(../images/sep-below.png) 0/100% 38px no-repeat;
+            }
+        }
+        .page {
+            margin: 20px;
+            .content {
+                background: white;
+                border: 1px solid $darkgrape;
+                padding: 20px;
+                @include box-shadow(0 0 5px black);
+                @include border-radius(10px);
+            }
+        }
+        .profile {
+            .camp {
+                margin-bottom: 1em;
+                a {
+                    font-size: 1.4em;
+                    color: $darkgrape;
+                    text-decoration: none;
+                    &:hover {
+                        color: $grape;
+                    }
+                }
             }
         }
         .reglogin {
@@ -323,6 +518,98 @@ html, body { height: 100%; }
                 background: url(../images/sep-above.png) 0/100% 38px no-repeat;
             }
         }
+        .settings {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../images/background-dark.png) center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 3em 1.5em 0;
+            overflow: scroll;
+            box-sizing: border-box;
+            .flash {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background: white;
+                display: none;
+            }
+            .frame { display: none; }
+            .content {
+                max-width: 500px;
+                background: url(../images/settings-content-bg.png) 0 / 100% 100% no-repeat;
+                border: 1px solid darken($darkgrape, 10%);
+                padding: 1.5em;
+                margin: 2em auto;
+                @include border-radius(20px);
+                @include box-shadow(0 3px 30px darken($darkgrape, 5%));
+                @include filter(drop-shadow(0 3px 2px black));
+                div {
+                    button, input:not([type=checkbox]) {
+                        width: 100%;
+                        box-sizing: border-box;
+                        font-size: 2em;
+                        padding: 4px 10px;
+                        margin-bottom: 0.75em;
+                        background: lighten($pink, 4%);
+                        border: 1px solid;
+                        outline: 0;
+                        @include border-radius(7px);
+                        @include transition(all 0.5s ease);
+                        @include box-shadow(0 1px 2px black);
+                        &.button {
+                            color: lighten($pink, 2%);
+                            background: lighten($darkpink, 5%);
+                            background: rgba(129,25,124,1);
+                            background: -moz-linear-gradient(top, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 63%, rgba(129,25,124,1) 100%);
+                            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(129,25,124,1)), color-stop(63%, rgba(59,0,46,1)), color-stop(100%, rgba(129,25,124,1)));
+                            background: -webkit-linear-gradient(top, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 63%, rgba(129,25,124,1) 100%);
+                            background: -o-linear-gradient(top, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 63%, rgba(129,25,124,1) 100%);
+                            background: -ms-linear-gradient(top, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 63%, rgba(129,25,124,1) 100%);
+                            background: linear-gradient(to bottom, rgba(129,25,124,1) 0%, rgba(59,0,46,1) 63%, rgba(129,25,124,1) 100%);
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81197c', endColorstr='#81197c', GradientType=0 );
+                        }
+                        &:hover, &.button:focus {
+                            color: $darkgrape;
+                            background: white;
+                            @include box-shadow(0 1px 4px lighten($darkgrape, 6%));
+                            @include filter(drop-shadow(0 -2px 15px $pink));
+                        }
+                        &:not(.button):focus {
+                            background: black;
+                            color: lighten($pink, 5%);
+                            border: 1px soild lighten($pink, 3%);
+                        }
+                        &.button:active {
+                            color: $darkpink;
+                            background: darken($grape, 4%);
+                            @include transition(none);
+                        }
+                    }
+                    input[type=checkbox] {
+                        margin-bottom: 1.5em;
+                    }
+                    &:last-child input {
+                        margin: 0;
+                    }
+                    &.name input {
+                        float: left;
+                        &:first-child {
+                            width: 47.5%;
+                            margin-right: 2.5%;
+                        }
+                        &:last-child {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
         .vines {
             position: absolute;
             top: 0;
@@ -332,40 +619,35 @@ html, body { height: 100%; }
             z-index: -1;
         }
     }
-
-    .camp_container{
-
-        margin: 20% auto;
-        height:70%;
-        width: 70%;
+    .camp_container {
+        margin: auto;
         background-color: #FFF2FF;
         border-radius: 7px;
     }
-
-
-    .chart_holder{
+    .chart_holder {
         height:40%;
         width: 40%;
         background-color: white;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .loading {
+        display: block;
+        width: 100%;
+        height: 70px;
+        background: url(../images/throbber.gif) center / contain no-repeat;
+    }
+    .overlay {
+        position: fixed;
+        left: 0;
+        top: -120%;
+        width: 100%;
+        height: 100%;
+        background: url(../images/background-dark.png) center/cover no-repeat;
+        border-bottom: 1px solid $pink;
+        z-index: 10;
+        @include box-shadow(0 0 5px #fff);
+        @include filter(drop-shadow(0 0 50px #000));
+    }
     footer {
         position: absolute;
         left: 0;
@@ -389,7 +671,7 @@ html, body { height: 100%; }
     &.home {
         header {
             nav {
-                top: -169px;
+                top: -100px;
                 padding: 0;
                 @include transition(all 0.675s ease);
             }
@@ -407,6 +689,9 @@ html, body { height: 100%; }
                 height: 370px;
                 @include transition(all 1.25s ease);
             }
+        }
+        nav.mobile {
+            right: -385px;
         }
         &.scrolled {
             header nav {
@@ -430,9 +715,14 @@ html, body { height: 100%; }
             header .spacer {
                 height: 100px;
             }
+            nav.mobile.active {
+                right: 0;
+            }
         }
     }
-    .display-for-mobile {
-        display: none;
-    }
 }
+.selectCampdiv {
+    margin-top: 2em;
+}
+
+@import 'screen';

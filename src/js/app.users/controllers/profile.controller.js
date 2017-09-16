@@ -1,3 +1,4 @@
+import $ from 'jquery';
 export default function Profile ($http, $state, $cookies, SERVER, UserService, PostAnalysis){
     let vm = this;
     init();
@@ -10,7 +11,13 @@ export default function Profile ($http, $state, $cookies, SERVER, UserService, P
             };
         UserService.profile(config).then(resp => {
             console.log(resp);
-            vm.user.email = resp.data.email;
+            vm.user = resp.data;
+        });
+
+        PostAnalysis.getCampaigns().then((res)=>{
+            $('.loading').remove();
+            vm.campaigns = res.data;
+            console.log(res.data);
         });
 
         PostAnalysis.getCampaigns().then((res)=>{

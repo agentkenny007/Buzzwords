@@ -9,7 +9,7 @@ import LayoutController from './controllers/layout.controller';
 import config from './utilities/config';
 import run from './utilities/run';
 import SERVER from './utilities/server.constant';
-import {TweetService} from './services/twitter.services.js'
+import {TweetService} from './services/twitter.services'
 
 angular
     .module('app.core', ['ui.router', 'ngCookies','base64'])
